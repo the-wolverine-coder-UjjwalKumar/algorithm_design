@@ -20,6 +20,7 @@ public class SumOfFirstnNumbers {
         return getSum(i+1, n, sum);
     }
 
+    // parametrized recursion
     // getting sum in reverse order i.e 3 + 2 + 1
     public static void printSum(int i, int sum){
         if(i < 1) {
@@ -30,7 +31,7 @@ public class SumOfFirstnNumbers {
         printSum(i-1, sum+i);
     }
 
-    // actual recursion
+    // functional recursion
     // f(n) sum of n numbers
     // f(n-1) sum of n-1 numbers
     public static int findSum(int n){
@@ -39,6 +40,7 @@ public class SumOfFirstnNumbers {
         return n + findSum(n-1);
     }
 
+    // Functional Recursion
     public static int factorial(int n){
         if(n==0) return 1;
         return  n * factorial(n-1);
