@@ -1,3 +1,5 @@
+package com.learning.recusion;
+
 public class LinearlyPrint {
 
     public static void main(String[] args) {

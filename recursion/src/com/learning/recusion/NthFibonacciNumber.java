@@ -1,3 +1,5 @@
+package com.learning.recusion;
+
 public class NthFibonacciNumber {
     public static void main(String[] args) {
         System.out.println("Nth Fibonacci Number using recursion !!");
