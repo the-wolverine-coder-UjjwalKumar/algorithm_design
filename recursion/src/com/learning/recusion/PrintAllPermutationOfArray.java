@@ -41,5 +41,28 @@ public class PrintAllPermutationOfArray {
         }
     }
 
+    //Optimized
+    // Tc - O(n!) * O(n)
+    //Sc - O(1) apart form auxiliary stack space
+    private static void getAllPermutationOptimized(int index, Integer[] arr, List<List<Integer>> ans) {
 
+        if(index==arr.length){
+            ans.add(new ArrayList<>(Arrays.asList(arr)));
+            return;
+        }
+
+        for(int i = index; i < arr.length; i++){
+            swap(i, index,  arr);
+
+            getAllPermutationOptimized(index+1, arr, ans);
+
+            swap(i, index, arr);
+        }
+    }
+
+    private static void swap(int i, int index, Integer[] arr) {
+        int temp = arr[i];
+        arr[i] = arr[index];
+        arr[index] = temp;
+    }
 }
