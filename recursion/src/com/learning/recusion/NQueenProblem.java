@@ -83,7 +83,7 @@ public class NQueenProblem {
 
     }
 
-    private static String getString(char[][] board) {
+    public static String getString(char[][] board) {
 
         StringBuilder sb = new StringBuilder();
 
