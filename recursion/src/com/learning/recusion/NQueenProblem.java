@@ -26,6 +26,8 @@ public class NQueenProblem {
 
     }
 
+    // TC : N! * 3N - N^2
+    // SC : O(N^2)
     private static void placeNQueen(int col, char[][] board, List<String> ans) {
 
         if (col == board.length) {
