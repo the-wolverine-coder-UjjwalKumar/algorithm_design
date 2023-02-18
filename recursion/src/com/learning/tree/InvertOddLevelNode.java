@@ -7,40 +7,40 @@ import java.util.stream.Collectors;
 
 public class InvertOddLevelNode {
     public static void main(String[] args) {
-        Node root = new Node(2);
+        TreeNode root = new TreeNode(2);
 
         // filling left subtree
-        root.left = new Node(3);
-        root.left.left = new Node(8);
-        root.left.right = new Node(13);
+        root.left = new TreeNode(3);
+        root.left.left = new TreeNode(8);
+        root.left.right = new TreeNode(13);
 
         // filling right subtree
-        root.right = new Node(5);
-        root.right.left = new Node(21);
-        root.right.right = new Node(34);
+        root.right = new TreeNode(5);
+        root.right.left = new TreeNode(21);
+        root.right.right = new TreeNode(34);
 
         System.out.println("InOrder before invert :: ");
         printInOrder(root);
         System.out.println();
-        Node newRoot = invertOddLevelNodeInTree(root, 0);
+        TreeNode newRoot = invertOddLevelNodeInTree(root, 0);
         System.out.println("Inorder after invert :: ");
         printInOrder(newRoot);
     }
 
-    private static Node invertOddLevelNodeInTree(Node root, int level) {
+    private static TreeNode invertOddLevelNodeInTree(TreeNode root, int level) {
         if (root == null) return null;
 
         // will be using BFS, level by level order traversal
-        Queue<Node> queue = new LinkedList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
 
         while (!queue.isEmpty()){
             int size = queue.size();
 
            while (size-- > 0) {
-               Node currentNode = queue.poll();
-               if (currentNode.left!=null) queue.add(currentNode.left);
-               if (currentNode.right!=null) queue.add(currentNode.right);
+               TreeNode currentTreeNode = queue.poll();
+               if (currentTreeNode.left!=null) queue.add(currentTreeNode.left);
+               if (currentTreeNode.right!=null) queue.add(currentTreeNode.right);
            }
             level++;
             if (level%2!=0) {
@@ -54,22 +54,22 @@ public class InvertOddLevelNode {
 
     }
 
-    private static void swap(Queue<Node> queue) {
+    private static void swap(Queue<TreeNode> queue) {
         if (!queue.isEmpty()){
-            List<Integer> data = queue.stream().map(i -> i.data).collect(Collectors.toList());
+            List<Integer> data = queue.stream().map(i -> i.val).collect(Collectors.toList());
             int j = data.size()-1;
-            for (Node currentNode : queue){
-                currentNode.data = data.get(j);
+            for (TreeNode currentTreeNode : queue){
+                currentTreeNode.val = data.get(j);
                 j--;
             }
         }
     }
 
-    private static Node invertTree(Node root, int level) {
+    private static TreeNode invertTree(TreeNode root, int level) {
         if (root == null) return null;
 
         if (level % 2 == 0) {
-            Node tmp = root.left;
+            TreeNode tmp = root.left;
             root.left = invertTree(root.right, level+1);
             root.right = invertTree(tmp, level+1);
         }
@@ -77,12 +77,12 @@ public class InvertOddLevelNode {
 
     }
 
-    private static void printInOrder(Node root) {
+    private static void printInOrder(TreeNode root) {
 
         if (root == null) return;
 
         printInOrder(root.left);
-        System.out.print(root.data + " ");
+        System.out.print(root.val + " ");
         printInOrder(root.right);
     }
 }
