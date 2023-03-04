@@ -12,7 +12,7 @@ public class CostofRemoveNumbers {
     }
 
     private static long getRemovalCost(int[] arr, long m) {
-        if (arr != null && arr.length <= 2) return 0;
+        if (arr == null || arr.length <= 2) return 0;
 
         long ans = 0;
         for (int i = 1; i <= arr.length - 2; i++) {
