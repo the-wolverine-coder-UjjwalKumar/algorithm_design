@@ -21,8 +21,13 @@ public class Patterns {
     private static void printPattern7(int row, int col) {
         // print the * in right-angled triangle
         for (int i = 0; i < row; i++) {
-            for (int j = 0; j <= (2*i+1) ; j++) {
-                System.out.print(" * ");
+            // print space
+            for (int space = 0; space < (row-i) ; space++) {
+                System.out.print(" ");
+            }
+            // print star
+            for (int j = 0; j < (2*i+1) ; j++) {
+                System.out.print("*");
             }
             System.out.println();
         }
